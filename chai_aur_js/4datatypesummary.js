@@ -38,3 +38,28 @@ const myfunction = function(){
 console.log(typeof(bignumber))
 console.log(typeof(outsidetemp))
 console.log(typeof(myfunction))
+
+
+// ......................................
+
+
+//stack (Primitive) mai copy milta hai and heap (Non-Primitive) reference milta hay
+let myyoutube = "Sitanshu"
+let anothername = myyoutube
+anothername = "Mishra"
+console.log(myyoutube)
+console.log(anothername)
+
+let userone = {
+    email:"user@gmail",
+    upi:"user@ybl"
+}
+let usertwo = userone;
+usertwo.email = "Sitanshu@gmail.com"
+usertwo.upi = "Sitatwou@ybl"
+
+
+console.log(userone.email);
+console.log(usertwo.email);
+console.log(userone.upi);
+console.log(userone.upi);
