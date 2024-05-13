@@ -62,4 +62,4 @@ const arr = [12,23,4,34]
 function arrayasparameter(arr){
     console.log(arr[2])
 }
-arrayasparameter(arr)
+arrayasparameter(arr) 
