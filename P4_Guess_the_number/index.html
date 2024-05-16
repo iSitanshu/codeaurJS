@@ -33,17 +33,105 @@
         <div class="nav"><h1>Number Guessing Game</h1></div><br>
         <div class="part2"><span>Try and guess a random number between 1 and 100</span><br>
         <span>You have 10 attempts to guess the right answer</span></div>
-        <form>
-            <label for="name"><h1>Guess the Number</h1></label>
-            <input type="text" id="space" class="space"><br><br><br>
+        <form class="form">
+            <label for="name" id="guess"><h1>Guess the Number</h1></label>
+            <input type="text" id="guessfield" class="guessfield"><br><br><br>
             <input type="submit" id="submit">
         </form><br><br>
         <div class="hold">
             <div class="prev"><span>Prev Guess:</span><span id="span"></span></div>
             <div class="rem"><span>Prev Remaining:</span><span id="span2"></span></div>
-        <p class="loworhig"></p>
+            <p class="loworhig"></p>
         </div>
     </div>
 </body>
+<script>
+    let random = parseInt((Math.random()*100)+1)
+    const submit = document.querySelector('#submit')
+    const userinp = document.querySelector('#guessfield')
+    const prev = document.querySelector('#span') //guessslot
+    const rem = document.querySelector('#span2')
+    const loworhig = document.querySelector('.loworhig')
+    const startover = document.querySelector('.hold')
+
+    const p = document.createElement('p')
+
+    let prevguess = [] //ekk array create kr lenge aur jo bhi user submit krega unko store kr lenge aur ussi ko dikha denge
+    let numguess = 1 //kitte attempt haar chuka hai aur jese 10 ho jaega tb disable kr denge
+
+    let playgame = true //allow to play game further
+    if(playgame){
+            submit.addEventListener('click',function(e){
+            e.preventDefault()//prevent submit button
+            const guess = parseInt(userinp.value) //store value by the user
+            validateguess(guess)//pass the user value to validate
+        })
+    }
+    
+    //functions
+    function validateguess(guess){
+        //guess ko validate kr dega 
+        //should not be alphabet 
+        //range 1-100
+        if(isNaN(guess)) alert("Please enter a valid number")
+        else if(guess<1) alert("Please enter a valid number greater than 1")
+        else if(guess>100) alert("Please enter a valid number less than 100")
+        else{
+            prevguess.push(guess)
+            if(numguess === 11) {
+            displayguess(guess)
+            displaymessage(`Game over. Random Number was ${random}`)
+            endgame()}
+            else{
+                displayguess(guess)
+                checkguess(guess)
+            }
+        }
+    }
+    function checkguess(guess){
+        //print the message after the validation
+        //Result/low/high
+        if(random === guess){
+            displaymessage('You guessed it right')
+            endgame()
+        }
+        else if(random > guess) displaymessage('Number is too low')
+        else displaymessage('Number is too high')
+    }
+    function displaymessage(message){
+        //display the message - direct interact  with DOM - can be written in the checkguess function but ...
+        // for low and high
+        loworhig.innerHTML = `<h2>${message}</h2>`
+    }
+    function displayguess(guess){
+        //value clean for next value
+        //edit and update the values
+        userinp.value = ''
+        prev.innerHTML += `${guess} `
+        numguess++ 
+        rem.innerHTML = `${11 - numguess}`
+    }
+    function endgame(){
+        userinp.value = ''
+        userinp.setAttribute('disabled','')
+        p.classList.add('button')
+        p.innerHTML = '<h2 id="newuser">Start New Game</h2>'
+        startover.appendChild(p)
+        playgame=false
+        newgame()
+    }
+    function newgame(){
+        const newgamebutton = document.querySelector('#newuser')
+        newgamebutton.addEventListener('click',function(e) {
+        random = parseInt((Math.random()*100)+1)
+        prevguess = []
+        numguess = 1
+        prev.innerHTML = ''
+        rem.innerHTML = `${11 - numguess}`
+        userinp.removeAttribute('disabled')
+        startover.removeChild(p)
+        playgame=true
+        })
+    }
 </script>
 </html>
