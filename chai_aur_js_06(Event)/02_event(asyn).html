@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asyn Javascript</title>
+</head>
+<body>
+    <h1>Code aur Chai</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayname = function(){
+        console.log("Sitanshu")
+    }
+    const time = function(){
+        document.querySelector('h1').innerHTML="Sitanshu Mishra"
+    }
+    const popup =function(){
+        alert('Do you want to have 15 percent off on our clothings')
+    }
+    setTimeout(sayname,2000)
+    const namechange = setTimeout(time,2000)
+    const changeme = setTimeout(popup ,3000)
+
+    // clearTimeout(changeme)
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeme)
+        console.log("Stopped");
+    })
+    //stop change of h1 title
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(namechange)
+        console.log("title remains the same")
+    })
+</script>
+</html>

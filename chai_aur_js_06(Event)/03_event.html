@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asyn Javascript</title>
+</head>
+<body>
+    <h1>Code aur JavaScript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setInterval(() => {
+    //     console.log("sitashh")
+    // }, 2000);
+    const startprinting = function(){
+        interid = setInterval(() => {
+            console.log("Sitanshu")
+        }, 2000);
+    }
+    const stopprinting = function() {
+        clearInterval(interid)
+        console.log("Stopped")
+    }
+    document.querySelector('#start').addEventListener('click',startprinting)
+    document.querySelector('#stop').addEventListener('click',stopprinting)
+</script>
+</html>
