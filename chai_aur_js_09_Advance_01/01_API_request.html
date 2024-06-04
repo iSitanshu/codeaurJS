@@ -1,0 +1,42 @@
+<!-- API Theory : API hai kya?
+- kese baat cheet kre = 
+#baat (Python)backend and frontend(JavaScript) mein (do system)
+#API gives you protocol and kya data aapko send ya recieve krna hai
+- kese aalas kre = (Third party se data dilva dena)
+#Login with google ,facebook, linkedin ham google ko bolenge dekhiyeh hamme apppe hai 
+poora trust we assume you created account ad verify, we just need to add in our data base 
+
+Restrauant -> Zomato -> Customer(Food menu) -->
+
+<!-- Advance Module -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+</head>
+<body style="background-color: #212121;">
+    Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+</body>
+<script>
+    const users = 'https://api.github.com/users/iSitanshu'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', users)
+    xhr.onreadystatechange = function() {
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data);
+            console.log(data.followers)
+            console.log(data.following_url)
+        }
+    }
+    xhr.send() 
+</script>
+</html>
