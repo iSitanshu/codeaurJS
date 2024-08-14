@@ -2,8 +2,8 @@
 function saymyname(){
     console.log("Sitanshu")
 }
-
-saymyname()
+// saymyname // reference 
+// saymyname() // execution 
 //functionname - reference 
 //functionname() - calling/execution
 
@@ -38,9 +38,10 @@ function loginusermessage(username = "Sitanshu"){  //giving default value
 
 //shoping cart - iten nhi pata hoenge kitte aaenge
 
-function calculatecartprice(val1,val2,...num1){ //... rest operator
+function calculatecartprice(...num1){ //... rest operator
     return num1
 }
+// [200,400,500,2000]
 // console.log(calculatecartprice(200,400,500,2000)) //array milega
 
 const user = {
