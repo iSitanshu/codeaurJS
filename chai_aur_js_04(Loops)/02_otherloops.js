@@ -1,11 +1,14 @@
 // for of 
-// ["","",""]
-// [{},{},{}]
+// ["","",""] array k andar string
+// [{},{},{}] array k andar object
 
 const arr = [1,2,3,4,5]
 for(const num of arr){
     // console.log(num);
 }
+
+// for of - Array,Map
+// for in - Object
 
 const greeting = "Hello World!"
 for(const greet of greeting){

@@ -45,6 +45,10 @@ if(Object.keys(emptyobj).length === 0){
     console.log("Object is empty")
 }
 
+// false == 0 => true
+// false == '' => true
+// 0 == '' => true
+
 //Nullish coalescing Operator (??): null undefined
 
 let val1;
